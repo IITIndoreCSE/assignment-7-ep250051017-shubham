@@ -27,7 +27,7 @@ int main() {
         cin >> arr[i];
     }
     modifyArray(arr, size);
-    cout << "Modified array: ";
+    cout << "Modified array: "<<endl;
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
