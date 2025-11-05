@@ -3,29 +3,43 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    int n;
-    cout << "Enter the number of elements in array: ";
-    if (!(cin >> n) || n <= 0) return 0;
-
-    int a[n];
-    cout << "Enter " << n << " elements: "<<endl;
-    for (int i = 0; i < n; ++i) {
-        cin >> a[i];
-    }
-
-    bool found = false;
-    for (int i = 0; i < n && !found;i++) {
-        for (int j = i + 1; j < n; j++) {
-            if (a[i] == a[j]) {
-                cout << "The first repeating element is: " << a[i] << '\n';
-                found = true;
+int repeatElement(int ar[],int size,bool &c){
+    bool a = true;
+    int rep;
+    for (int i =0;i<size;i++){
+        for (int j=0;j<size;j++){
+            if (ar[i]==ar[j]&&i!=j){
+                rep =ar[i];
+                a=false;
+                c=true;
                 break;
             }
+        if (!a){
+            break;
         }
+        }
+    if (!a){
+        break;
     }
-    if (!found) cout << "No repeating elements found in the array.";
+    }
+    
+    return rep;
+}
 
-   
-    return 0;
+int main(){
+    cout<<"Enter the number of elements: ";
+    int size;
+    cin>>size;
+    int ar[size];
+    cout<<"Enter "<<size<<" numbers: "<<endl;
+    for (int i =0;i <size;i++){
+        cin>>ar[i];
+    }
+    bool c =false;
+    int rep = repeatElement(ar,size,c);
+    if(!c){
+        cout<<"No repeating elements found."<<endl;
+    } else {
+        cout<<"The first repeating element is: "<<rep<<endl;
+    }
 }
