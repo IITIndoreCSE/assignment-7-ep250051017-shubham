@@ -2,47 +2,27 @@
    with the first character of each word determining the order. For example, if there is a word “africa” and another word “europe”; africa would come before europe in the concatenated string.*/
 
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstring>
 using namespace std;
 
-int main() {
-    string word[5];
-
-    cout << "Enter 5 words:\n";
-    for (int i = 0; i < 5; i++) {
-        cin >> word[i];
+int main(){
+    //we need to make a 2D matrix
+    char str[6][100];//5 words and 1 null terminating character.
+    for (int i =0; i<5; i++){
+        cout<<"Enter word "<<i+1<<" : ";
+        cin.getline(str[i], 100);
+    //using bubble sort
     }
-
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4 - i; j++) {
-            char first1 = tolower(word[j][0]);
-            char first2 = tolower(word[j + 1][0]);
-
-            if (first1 > first2) {
-                string temp = word[j];
-                word[j] = word[j + 1];
-                word[j + 1] = temp;
+    for (int i =0; i<5; i++){
+        for (int j =0; j<5-i; j++){
+            if (str[j][0]>str[j+1][0]){
+                swap(str[j],str[j+1]);
             }
         }
     }
-
-    cout << "Words after sorting: "<<endl;
-    for (int i = 0; i < 5; i++) {
-        cout << word[i] << " ";
+    for (int i =1; i<6; i++){
+        cout<<str[i]<<" ";
     }
-    cout << endl;
-
-    return 0;
+    cout<<endl;
 }
-	
-
-
-
-
-
-
-
-
-
-
-
